@@ -1,0 +1,19 @@
+# Declare compose version
+version: '2.0'
+
+# Define your services
+services:
+  web:  # Main web service
+    build: .    # Directory containing Dockerfile
+    ports:  # Ports to expose
+    - "8888:8080"
+    volumes:    # Volumes (directories) to mount
+    - .:/technoDonor
+    #- logvolume01:/var/log
+    links:  # Containers on which 'web' depends
+    - new1
+  new1:    # Redis container service
+    image: new1    # Specify an existing docker image
+
+#volumes:    # Create volume using volume parameters (check out official documentation)
+  #logvolume01: {}

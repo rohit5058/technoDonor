@@ -7,16 +7,16 @@
 
 FROM maven:3-jdk-8
 
-WORKDIR /code
+WORKDIR /technoDonor
 
 # Prepare by downloading dependencies
-ADD pom.xml /code/pom.xml
-RUN ["mvn", "dependency:resolve"]
-RUN ["mvn", "verify"]
+ADD pom.xml /technoDonor/pom.xml
+#RUN ["mvn", "dependency:resolve"]
+#RUN ["mvn", "verify"]
 
 # Adding source, compile and package into a fat jar
-ADD src /code/src
+ADD src /technoDonor/src
 RUN ["mvn", "package"]
 	
-EXPOSE 8081
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/sparkexample-jar-with-dependencies.jar"]
+#EXPOSE 8081
+CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/Donor-0.0.1.war"]
